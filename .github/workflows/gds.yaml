@@ -56,6 +56,9 @@ jobs:
        shell: bash
        run: pip install -r test/requirements.txt
 
+     - name: ccache
+       uses: hendrikmuhs/ccache-action@v1.2
+
      - name: Install iverilog
        shell: bash
        run: |
@@ -64,6 +67,7 @@ jobs:
           git clone https://github.com/steveicarus/iverilog
           cd iverilog
           git checkout d8c3c51ab1190ed3fb26540d7de6177f83e0e75b
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           sh autoconf.sh
           ./configure
           make
