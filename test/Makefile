@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = $(freq_meas.v, bcd_counter.v, bcd_digit.v) 
+PROJECT_SOURCES = freq_meas.v, bcd_counter.v, bcd_digit.v
 
 ifneq ($(GATES),yes)
 
