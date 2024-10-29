@@ -1,56 +1,78 @@
-# Tiny Tapeout project information
+--- 
+# TinyTapeout project information
 project:
-  title:        "Frequency Counter"      #  
-  author:       "S Pefhany"  # 
-  discord:      "speff"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "Simple digital frequency counter"      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     50000000       # Clock frequency in Hz (or 0 if not applicable)
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 6x2
-
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_spehro_freq_meas"
-
-  # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
-  source_files:
-   - freq_meas.v
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - freq_meas.v
     - bcd_counter.v
     - bcd_digit.v 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
-pinout:
-  # Inputs
-  ui[0]: "input signal"
-  ui[1]: "n10_50"
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  top_module:  "tt_um_spehro_freq_meas"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
-  # Outputs
-  uo[0]: "segment a"
-  uo[1]: "segment b"
-  uo[2]: "segment c"
-  uo[3]: "segment d"
-  uo[4]: "segment e"
-  uo[5]: "segment f"
-  uo[6]: "segment g"
-  uo[7]: "dot (not used)"
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
 
-  # Bidirectional pins
-  uio[0]: "digit 0 (LSD) drive (active low)"
-  uio[1]: "digit 1"
-  uio[2]: "digit 2"
-  uio[3]: "digit 3"
-  uio[4]: "digit 4"
-  uio[5]: "digit 5"
-  uio[6]: "digit 6"
-  uio[7]: "digit 7 (MSD)"
+# Keep a track of the submission yaml
+yaml_version: 4
 
-# Do not change!
-yaml_version: 6
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Spehro"      # Your name
+  title:        "Frequency counter"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "simple frequency counter"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      "A simple frequency counter that should work up to close to clock frequency/2 with an 8-digit LED display 7-segment drive"
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+     "Connect an 8-digit common anode LED display to the digit drive and sev_segment ports. Both are active low drive so 
+     PNP transistors or P-channel MOSFETs are required to drive each digit (max 8) 
+     Apply a clock, ideally 50MHz, but if TT4 can't support that, then 10MHz, input n10_50 selects (low for 10MHz clock, high for 50MHz)
+     Apply a signal to be measured and the multiplexed display should show the frequency "
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - input signal 
+    - n10_50 pull low for 10MHz clock, high for 50MHz.
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot (not used) 
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    -  digit 0 (LSD) drive (active low)  
+    -  digit 1
+    -  digit 2
+    -  digit 3
+    -  digit 4
+    -  digit 5
+    -  digit 6
+    -  digit 7 (MSD) 
+
+# The following fields are optional
+  tag:          "experiment"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "8 digit LED display and digit drivers"      # Describe any external hardware needed
+  discord:      "__speff"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
