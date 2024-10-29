@@ -9,12 +9,15 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+"A simple frequency counter that should work up to close to clock frequency/2 with an 8-digit LED display 7-segment drive"
 
 ## How to test
 
-Explain how to use your project
+"Connect an 8-digit common anode LED display to the digit drive and sev_segment ports. Both are active low drive so 
+PNP transistors or P-channel MOSFETs are required to drive each digit (max 8) 
+Apply a clock, ideally 50MHz, but if TT4 can't support that, then 10MHz, input n10_50 selects (low for 10MHz clock, high for 50MHz)
+Apply a signal to be measured and the multiplexed display should show the frequency "
 
-## External hardware
+## External Hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+8 digit LED display and digit drivers
