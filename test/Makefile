@@ -5,8 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-# PROJECT_SOURCES = freq_meas.v, bcd_digit.v, bcd_counter.v 
-PROJECT_SOURCES = $(wildcard *.v)
+PROJECT_SOURCES = freq_meas.v bcd_digit.v bcd_counter.v 
 ifneq ($(GATES),yes)
 
 # RTL simulation:
