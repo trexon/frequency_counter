@@ -3,6 +3,10 @@
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
   title:        "Frequency counter"      # Project title
+  author:       "Spehro"      # Your name
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "simple frequency counter"      # Short description of what your project does
+  
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
   source_files:        
@@ -21,11 +25,11 @@ yaml_version: 6
 # it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
-documentation: 
-  author:       "Spehro"      # Your name
-  title:        "Frequency counter"      # Project title
-  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "simple frequency counter"      # Short description of what your project does
+#documentation: 
+#  author:       "Spehro"      # Your name
+#  title:        "Frequency counter"      # Project title
+#  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+#  description:  "simple frequency counter"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
